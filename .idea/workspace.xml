@@ -20,15 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d9efb292-b504-468c-8390-308078de63c0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/centus/DBManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/centus/PersonalManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/centus/StartPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/centus2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/centus2.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/centus2/centus/MainFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/centus2/centus/MainFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/centus2/centus/Service$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/centus2/centus/Service$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/centus2/centus/Service.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/centus2/centus/Service.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/centus/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/centus/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/centus/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/centus/Service.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,22 +116,22 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="348" y="82" key="FileChooserDialogImpl/0.0.1280.680/1920.0.1680.1010@0.0.1280.680" timestamp="1611158694486" />
-    <state width="1237" height="163" key="GridCell.Tab.0.bottom" timestamp="1611169623761">
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom" timestamp="1611172458580">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1680.1010@0.0.1280.680" timestamp="1611169623761" />
-    <state width="1237" height="163" key="GridCell.Tab.0.center" timestamp="1611169623761">
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1680.1010@0.0.1280.680" timestamp="1611172458580" />
+    <state width="1237" height="163" key="GridCell.Tab.0.center" timestamp="1611172458580">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1680.1010@0.0.1280.680" timestamp="1611169623761" />
-    <state width="1237" height="163" key="GridCell.Tab.0.left" timestamp="1611169623761">
+    <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1680.1010@0.0.1280.680" timestamp="1611172458580" />
+    <state width="1237" height="163" key="GridCell.Tab.0.left" timestamp="1611172458580">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1680.1010@0.0.1280.680" timestamp="1611169623761" />
-    <state width="1237" height="163" key="GridCell.Tab.0.right" timestamp="1611169623761">
+    <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1680.1010@0.0.1280.680" timestamp="1611172458580" />
+    <state width="1237" height="163" key="GridCell.Tab.0.right" timestamp="1611172458580">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1680.1010@0.0.1280.680" timestamp="1611169623761" />
+    <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1680.1010@0.0.1280.680" timestamp="1611172458580" />
     <state x="121" y="0" key="SettingsEditor" timestamp="1611158709608">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
