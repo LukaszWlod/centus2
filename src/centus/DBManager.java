@@ -2,10 +2,7 @@ package centus;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Properties;
 
 public class DBManager {
@@ -42,7 +39,7 @@ public class DBManager {
 
         public void createTable (String sqlQuery){
             try{
-                System.out.println("Tworze tabele ");
+
                 connection =connect();
                 connection.setAutoCommit(false);
                 statement = connection.createStatement();
@@ -57,5 +54,18 @@ public class DBManager {
             }
 
         }
+        public void useDataBase() throws SQLException {
+            statement.executeUpdate("USE wspa");
+        }
+
+        public ResultSet doQuery (String query) throws SQLException{
+           this.useDataBase();
+            connection.setAutoCommit(true);
+            statement = connection.createStatement();
+            return  statement.executeQuery(query);
+        }
+
+
+
 }
 

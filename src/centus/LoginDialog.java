@@ -3,6 +3,7 @@ package centus;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class LoginDialog extends JDialog {
@@ -25,9 +26,16 @@ public class LoginDialog extends JDialog {
 
         super(parent,modal);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-
+        setTitle("Logowanie");
 
         this.createLoginPanel();
+        try {
+            this.loadUsersFromDatabase();
+        } catch (SQLException throwables) {
+            throwables.getMessage();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         dbManager= new PersonalManager();
 
@@ -36,7 +44,7 @@ public class LoginDialog extends JDialog {
         setVisible(true);
     }
 
-    public void createLoginPanel(){
+    public void createLoginPanel() throws IOException, SQLException {
         loginPanel = new JPanel();
         loginLabel = new JLabel("Login: ");
         passwordLabel = new JLabel("Hasło: ");
@@ -68,6 +76,19 @@ public class LoginDialog extends JDialog {
 
 
 
-    }
 
+
+    }
+    public void loadUsersFromDatabase() throws SQLException,IOException{
+        personalManager = new PersonalManager();
+        comboUser.removeAll();
+        ResultSet resultSet = personalManager.loadLoginFromDatabase();
+        String login = " ";
+        comboUser.addItem(login);
+        while (resultSet.next()){
+            login = resultSet.getString("email");
+            comboUser.addItem(login);
+        }
+        passwordField.setText("");
+    }
 }
