@@ -2,6 +2,10 @@ package centus;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -74,16 +78,44 @@ public class LoginDialog extends JDialog {
         loginPanel.add(finishButton);
         loginPanel.add(dropUserButton);
 
+        comboUser.addItemListener(new ItemListener() {
+            // Listening if a new items of the combo box has been selected.
+            public void itemStateChanged(ItemEvent event) {
+
+
+                // The item affected by the event.
+                Object item = event.getItem();
+
+               if( item.toString() !=""){
+                   loginButton.setEnabled(true);
+                   passwordField.setEnabled(true);
+               }
+
+                System.out.println("Affected items: " + item.toString());
+
+                if (event.getStateChange() == ItemEvent.SELECTED) {
+                    System.out.println(item.toString() + " selected.");
+                }
+
+                if (event.getStateChange() == ItemEvent.DESELECTED) {
+                    System.out.println(item.toString() + " deselected.");
+                }
+            }
+        });
 
 
 
 
-    }
+        }
+
+
+
+
     public void loadUsersFromDatabase() throws SQLException,IOException{
         personalManager = new PersonalManager();
         comboUser.removeAll();
         ResultSet resultSet = personalManager.loadLoginFromDatabase();
-        String login = " ";
+        String login = "";
         comboUser.addItem(login);
         while (resultSet.next()){
             login = resultSet.getString("email");
