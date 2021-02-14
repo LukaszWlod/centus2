@@ -11,6 +11,7 @@ public class PersonalManager extends DBManager{
             + "password VARCHAR(20) NOT NULL, PRIMARY KEY (id))";
 
     private String selectEmails ="SELECT email FROM person;";
+
     public PersonalManager() throws IOException, SQLException{
         super();
         createTable(crateUser);
@@ -19,5 +20,11 @@ public class PersonalManager extends DBManager{
 
     public ResultSet loadLoginFromDatabase() throws SQLException {
         return  doQuery(selectEmails);
+    }
+
+    public ResultSet loadPasswordFromDatabase(String login ) throws SQLException {
+        String selectPassword ="SELECT password FROM person WHERE email =  '"   + login + "';";
+
+        return  doQuery(selectPassword);
     }
 }

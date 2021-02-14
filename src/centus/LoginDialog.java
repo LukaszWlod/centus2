@@ -29,7 +29,7 @@ public class LoginDialog extends JDialog {
     throws IOException, SQLException {
 
         super(parent,modal);
-        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Logowanie");
 
         this.createLoginPanel();
@@ -45,6 +45,7 @@ public class LoginDialog extends JDialog {
 
         this.dbManager = dataBase;
         add(loginPanel);
+
         setVisible(true);
     }
 
@@ -69,6 +70,7 @@ public class LoginDialog extends JDialog {
         passwordField.setEnabled(false);
 
 
+
         loginPanel.add(loginLabel);
         loginPanel.add(comboUser);
         loginPanel.add(passwordLabel);
@@ -79,11 +81,9 @@ public class LoginDialog extends JDialog {
         loginPanel.add(dropUserButton);
 
         comboUser.addItemListener(new ItemListener() {
-            // Listening if a new items of the combo box has been selected.
+
             public void itemStateChanged(ItemEvent event) {
 
-
-                // The item affected by the event.
                 Object item = event.getItem();
 
                if( item.toString() !=""){
@@ -91,20 +91,42 @@ public class LoginDialog extends JDialog {
                    passwordField.setEnabled(true);
                }
 
-                System.out.println("Affected items: " + item.toString());
 
-                if (event.getStateChange() == ItemEvent.SELECTED) {
-                    System.out.println(item.toString() + " selected.");
-                }
-
-                if (event.getStateChange() == ItemEvent.DESELECTED) {
-                    System.out.println(item.toString() + " deselected.");
-                }
             }
         });
 
 
 
+
+
+            loginButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String selectedItem = comboUser.getSelectedItem().toString();
+                    String password= null;
+
+
+                    String passwordFromField = new String( passwordField.getPassword());
+                    try {
+                        ResultSet resultSet = personalManager.loadPasswordFromDatabase(selectedItem);
+                        if (resultSet.next()){
+                             password = resultSet.getString("password");
+                            }
+                    } catch (SQLException throwables) {
+                        throwables.printStackTrace();
+                    }
+
+                    if (passwordFromField.equals(password)){
+                        setVisible(false);
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(getParent(),
+                                "Błedne hasło!",
+                                "Bład hasła",
+                                JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            });
 
         }
 

@@ -32,7 +32,7 @@ public class DBManager {
             String userName = props.getProperty("jdbc.username");
             String password = props.getProperty("jdbc.password");
 
-        System.out.println("Connected to database "+ url);
+
 
             return DriverManager.getConnection(url,userName,password);
         }
