@@ -2,16 +2,10 @@ package centus;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class LoginDialog extends JDialog {
-    private DBManager dbManager;
     private JPanel loginPanel;
     private PersonalManager personalManager;
     private JButton loginButton;
@@ -25,31 +19,67 @@ public class LoginDialog extends JDialog {
 
 
 
-    public LoginDialog(Frame parent , boolean modal, PersonalManager dataBase)
-    throws IOException, SQLException {
+    public LoginDialog(Frame parent , boolean modal, PersonalManager personalManager)
+    throws  SQLException {
 
         super(parent,modal);
+        this.personalManager = personalManager;
         setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Logowanie");
 
         this.createLoginPanel();
-        try {
-            this.loadUsersFromDatabase();
-        } catch (SQLException throwables) {
-            throwables.getMessage();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        this.loadUsersFromDatabase();
 
-        dbManager= new PersonalManager();
 
-        this.dbManager = dataBase;
+
+        comboUser.addItemListener(event -> {
+
+            Object item = event.getItem();
+
+            if(!item.toString().equals("")){
+                loginButton.setEnabled(true);
+                passwordField.setEnabled(true);
+            }
+        });
+
+
+        loginButton.addActionListener(e -> {
+            String selectedItem = comboUser.getSelectedItem().toString();
+            String password= null;
+
+            String passwordFromField = new String( passwordField.getPassword());
+            try {
+                ResultSet resultSet = personalManager.loadPasswordFromDatabase(selectedItem);
+                if (resultSet.next()){
+                    password = resultSet.getString("password");
+                }
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+
+            if (passwordFromField.equals(password)){
+                setVisible(false);
+            }
+            else{
+                JOptionPane.showMessageDialog(getParent(),
+                        "Błedne hasło!",
+                        "Bład hasła",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        });
+
+
+
         add(loginPanel);
 
         setVisible(true);
+
+
     }
 
-    public void createLoginPanel() throws IOException, SQLException {
+
+
+    public void createLoginPanel()  {
         loginPanel = new JPanel();
         loginLabel = new JLabel("Login: ");
         passwordLabel = new JLabel("Hasło: ");
@@ -69,8 +99,6 @@ public class LoginDialog extends JDialog {
         loginButton.setEnabled(false);
         passwordField.setEnabled(false);
 
-
-
         loginPanel.add(loginLabel);
         loginPanel.add(comboUser);
         loginPanel.add(passwordLabel);
@@ -80,61 +108,12 @@ public class LoginDialog extends JDialog {
         loginPanel.add(finishButton);
         loginPanel.add(dropUserButton);
 
-        comboUser.addItemListener(new ItemListener() {
-
-            public void itemStateChanged(ItemEvent event) {
-
-                Object item = event.getItem();
-
-               if( item.toString() !=""){
-                   loginButton.setEnabled(true);
-                   passwordField.setEnabled(true);
-               }
-
-
-            }
-        });
+    }
 
 
 
 
-
-            loginButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    String selectedItem = comboUser.getSelectedItem().toString();
-                    String password= null;
-
-
-                    String passwordFromField = new String( passwordField.getPassword());
-                    try {
-                        ResultSet resultSet = personalManager.loadPasswordFromDatabase(selectedItem);
-                        if (resultSet.next()){
-                             password = resultSet.getString("password");
-                            }
-                    } catch (SQLException throwables) {
-                        throwables.printStackTrace();
-                    }
-
-                    if (passwordFromField.equals(password)){
-                        setVisible(false);
-                    }
-                    else{
-                        JOptionPane.showMessageDialog(getParent(),
-                                "Błedne hasło!",
-                                "Bład hasła",
-                                JOptionPane.ERROR_MESSAGE);
-                    }
-                }
-            });
-
-        }
-
-
-
-
-    public void loadUsersFromDatabase() throws SQLException,IOException{
-        personalManager = new PersonalManager();
+    public void loadUsersFromDatabase() throws SQLException{
         comboUser.removeAll();
         ResultSet resultSet = personalManager.loadLoginFromDatabase();
         String login = "";
@@ -145,4 +124,7 @@ public class LoginDialog extends JDialog {
         }
         passwordField.setText("");
     }
+
+
+
 }
