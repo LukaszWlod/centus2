@@ -13,7 +13,8 @@ public class DBManager {
 
         public  DBManager()throws  IOException, SQLException{
             this.readDataBaseProperties();
-            this.connect();
+            connection= connect();
+            statement = connection.createStatement();
         }
 
     private void  readDataBaseProperties ()throws  IOException {
@@ -31,39 +32,26 @@ public class DBManager {
             String url = props.getProperty("jdbc.url");
             String userName = props.getProperty("jdbc.username");
             String password = props.getProperty("jdbc.password");
-
-
-
             return DriverManager.getConnection(url,userName,password);
         }
 
-        public void createTable (String sqlQuery){
-            try{
-
-                connection =connect();
-                connection.setAutoCommit(false);
-                statement = connection.createStatement();
-                statement.executeUpdate(sqlQuery);
-                connection.commit();
-            }catch (SQLException ex){
-                try {
-                    connection.rollback();
-                } catch (SQLException ex1){
-                    System.out.println("Bład podczas tworzenia tabel\n" + ex);
-                }
-            }
-
-        }
         public void useDataBase() throws SQLException {
             statement.executeUpdate("USE wspa");
         }
 
-        public ResultSet doQuery (String query) throws SQLException{
+        public ResultSet executeSelectQuery(String query) throws SQLException{
            this.useDataBase();
-            connection.setAutoCommit(true);
-            statement = connection.createStatement();
             return  statement.executeQuery(query);
         }
+        public void executeQuery(String query){
+            try {
+                this.useDataBase();
+                statement.execute(query);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+
 
 
 
