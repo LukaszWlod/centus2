@@ -15,7 +15,7 @@ public class LoginDialog extends JDialog {
     private JLabel passwordLabel;
     private JPasswordField passwordField;
     private JButton dropUserButton;
-    private JButton finishButton;
+    private JButton exitButton;
 
 
 
@@ -69,7 +69,9 @@ public class LoginDialog extends JDialog {
         });
 
 
-
+        exitButton.addActionListener(event ->{
+            System.exit(0);
+        });
         add(loginPanel);
 
         setVisible(true);
@@ -88,7 +90,7 @@ public class LoginDialog extends JDialog {
         loginButton = new JButton("Zaloguj się");
         newUserButton = new JButton("Załóż konto");
         dropUserButton = new JButton("Usuń");
-        finishButton = new JButton("Zakończ");
+        exitButton = new JButton("Zakończ");
 
         loginPanel.setBorder(BorderFactory.createTitledBorder("Panel logowania"));
         loginPanel.setLayout(new GridLayout(4,2,5,5));
@@ -105,7 +107,7 @@ public class LoginDialog extends JDialog {
         loginPanel.add(passwordField);
         loginPanel.add(loginButton);
         loginPanel.add(newUserButton);
-        loginPanel.add(finishButton);
+        loginPanel.add(exitButton);
         loginPanel.add(dropUserButton);
 
     }
