@@ -25,7 +25,7 @@ public class RegistrationDialog extends JDialog {
         add(registrationPanel);
         setVisible(false);
 
-        
+
 
     }
 
