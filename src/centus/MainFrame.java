@@ -11,6 +11,7 @@ public class MainFrame extends JFrame {
     private PersonalManager personalManager;
     private StartPanel startPanel;
     private LoginDialog loginDialog;
+    private RegistrationDialog registrationDialog;
 
     MainFrame() throws IOException, SQLException {
 
@@ -18,8 +19,11 @@ public class MainFrame extends JFrame {
         super("Centuś");
         personalManager = new PersonalManager();
         startPanel = new StartPanel();
-        loginDialog = new LoginDialog(this, true, personalManager);
+        registrationDialog = new RegistrationDialog(this, true, personalManager);
+        registrationDialog.setLocationRelativeTo(this);
+        loginDialog = new LoginDialog(this, true, personalManager,registrationDialog);
         loginDialog.setLocationRelativeTo(this);
+
 
         add(startPanel);
 

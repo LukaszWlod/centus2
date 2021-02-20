@@ -2,6 +2,8 @@ package centus;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -16,19 +18,23 @@ public class LoginDialog extends JDialog {
     private JPasswordField passwordField;
     private JButton dropUserButton;
     private JButton exitButton;
+    private  RegistrationDialog registrationDialog;
 
 
 
-    public LoginDialog(Frame parent , boolean modal, PersonalManager personalManager)
+    public LoginDialog(Frame parent , boolean modal, PersonalManager personalManager ,RegistrationDialog registrationDialog)
     throws  SQLException {
 
         super(parent,modal);
         this.personalManager = personalManager;
+        this.registrationDialog = registrationDialog;
         setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("Logowanie");
+
 
         this.createLoginPanel();
         this.loadUsersFromDatabase();
+
+
 
 
 
@@ -72,7 +78,22 @@ public class LoginDialog extends JDialog {
         exitButton.addActionListener(event ->{
             System.exit(0);
         });
+
+        newUserButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                registrationDialog.setVisible(true);
+
+            }
+        });
+
+
         add(loginPanel);
+
+
+
+
 
         setVisible(true);
 
@@ -126,6 +147,7 @@ public class LoginDialog extends JDialog {
         }
         passwordField.setText("");
     }
+
 
 
 
