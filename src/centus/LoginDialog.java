@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class LoginDialog extends JDialog {
+
     private JPanel loginPanel;
     private PersonalManager personalManager;
     private JButton loginButton;
@@ -18,21 +19,37 @@ public class LoginDialog extends JDialog {
     private JPasswordField passwordField;
     private JButton dropUserButton;
     private JButton exitButton;
-    private  RegistrationDialog registrationDialog;
 
 
+    private JPanel registrationPanel;
+    private JLabel nameLabel;
+    private JTextField nameField;
+    private JLabel lastNameLabel;
+    private JTextField lastNameField;
+    private JLabel emailLabel;
+    private JTextField emailFiled;
+    private JLabel repeatPasswordLabel;
+    private JPasswordField repeatPasswordField;
+    private JButton safeButton;
+    private JButton cancelButton;
 
-    public LoginDialog(Frame parent , boolean modal, PersonalManager personalManager ,RegistrationDialog registrationDialog)
+
+    public LoginDialog(Frame parent , boolean modal, PersonalManager personalManager )
     throws  SQLException {
 
         super(parent,modal);
         this.personalManager = personalManager;
-        this.registrationDialog = registrationDialog;
+
         setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 
-
+        createRegisterPanel();
         this.createLoginPanel();
         this.loadUsersFromDatabase();
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        setBounds(200,150,260,220);
+        setResizable(true);
+
+
 
 
 
@@ -82,9 +99,20 @@ public class LoginDialog extends JDialog {
         newUserButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setVisible(false);
-                registrationDialog.setVisible(true);
 
+                loginPanel.setVisible(false);
+
+                add(registrationPanel);
+                registrationPanel.setVisible(true);
+
+            }
+        });
+
+        cancelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                registrationPanel.setVisible(false);
+                loginPanel.setVisible(true);
             }
         });
 
@@ -115,10 +143,9 @@ public class LoginDialog extends JDialog {
 
         loginPanel.setBorder(BorderFactory.createTitledBorder("Panel logowania"));
         loginPanel.setLayout(new GridLayout(4,2,5,5));
-        setBounds(200,150,260,165);
-        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Logowanie");
-        setResizable(true);
+
+
+
         loginButton.setEnabled(false);
         passwordField.setEnabled(false);
 
@@ -132,7 +159,44 @@ public class LoginDialog extends JDialog {
         loginPanel.add(dropUserButton);
 
     }
+    public void createRegisterPanel()  {
+        registrationPanel = new JPanel();
+        nameLabel = new JLabel("Imię: ");
+        nameField = new JTextField(15);
+        lastNameLabel = new JLabel("Nazwisko: ");
+        lastNameField = new JTextField(15);
+        emailLabel = new JLabel("Email: ");
+        emailFiled = new JTextField(15);
+        passwordLabel = new JLabel("Hasło: ");
+        passwordField = new JPasswordField(15);
+        repeatPasswordLabel = new JLabel("Powtórz hasło: ");
+        repeatPasswordField = new JPasswordField(15);
 
+        safeButton = new JButton("Zapisz");
+        cancelButton = new JButton("Anuluj");
+
+        registrationPanel.setBorder(BorderFactory.createTitledBorder("Panel rejestracji"));
+        registrationPanel.setLayout(new GridLayout(6,2,5,5));
+
+
+        registrationPanel.add(nameLabel);
+        registrationPanel.add(nameField);
+        registrationPanel.add(lastNameLabel);
+        registrationPanel.add(lastNameField);
+        registrationPanel.add(emailLabel);
+        registrationPanel.add(emailFiled);
+        registrationPanel.add(passwordLabel);
+        registrationPanel.add(passwordField);
+        registrationPanel.add(repeatPasswordLabel);
+        registrationPanel.add(repeatPasswordField);
+        registrationPanel.add(cancelButton);
+        registrationPanel.add(safeButton);
+
+
+
+
+
+    }
 
 
 
