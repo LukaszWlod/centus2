@@ -28,10 +28,13 @@ public class LoginDialog extends JDialog {
     private JTextField lastNameField;
     private JLabel emailLabel;
     private JTextField emailFiled;
+    private JPasswordField registrationPasswordField;
     private JLabel repeatPasswordLabel;
     private JPasswordField repeatPasswordField;
     private JButton safeButton;
     private JButton cancelButton;
+
+
 
 
     public LoginDialog(Frame parent , boolean modal, PersonalManager personalManager )
@@ -116,6 +119,40 @@ public class LoginDialog extends JDialog {
             }
         });
 
+        safeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String password = new String (registrationPasswordField.getPassword());
+                String password2 = new String(repeatPasswordField.getPassword());
+
+
+
+
+
+                if(password.equals(password2)) {
+                    nameField.getText();
+                    User newUser = new User(nameField.getText(),lastNameField.getText(),emailFiled.getText(),password);
+                    nameField.setText("");
+                    lastNameField.setText("");
+                    emailFiled.setText("");
+                    repeatPasswordField.setText("");
+                    repeatPasswordField.setText("");
+                    try {
+                        personalManager.addNewUser(newUser);
+                    } catch (SQLException throwables) {
+                        throwables.printStackTrace();
+                    }
+                }
+                else{
+                    JOptionPane.showMessageDialog(getParent(),
+                            "Wpisane hasła nie sa takie same!",
+                            "Bład hasła",
+                            JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+
 
         add(loginPanel);
 
@@ -168,7 +205,7 @@ public class LoginDialog extends JDialog {
         emailLabel = new JLabel("Email: ");
         emailFiled = new JTextField(15);
         passwordLabel = new JLabel("Hasło: ");
-        passwordField = new JPasswordField(15);
+        registrationPasswordField = new JPasswordField(15);
         repeatPasswordLabel = new JLabel("Powtórz hasło: ");
         repeatPasswordField = new JPasswordField(15);
 
@@ -186,7 +223,7 @@ public class LoginDialog extends JDialog {
         registrationPanel.add(emailLabel);
         registrationPanel.add(emailFiled);
         registrationPanel.add(passwordLabel);
-        registrationPanel.add(passwordField);
+        registrationPanel.add(registrationPasswordField);
         registrationPanel.add(repeatPasswordLabel);
         registrationPanel.add(repeatPasswordField);
         registrationPanel.add(cancelButton);

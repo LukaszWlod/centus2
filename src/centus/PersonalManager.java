@@ -19,4 +19,12 @@ public class PersonalManager extends DBManager{
         String selectPassword ="SELECT password FROM person WHERE email =  '"   + login + "';";
         return  executeSelectQuery(selectPassword);
     }
+
+    public  void addNewUser (User newUser) throws  SQLException{
+       String insertInto = " INSERT INTO person ( first_name , last_name , email , password)"+
+              "  VALUES " +
+        " ( '"  + newUser.getName()  + "'"+ " , '" + newUser.getLastName() + "' , "
+               +" '" + newUser.getEmail() + "' ,'" + newUser.getPassword() + "' ); " ;
+              executeQuery(insertInto);
+    }
 }
