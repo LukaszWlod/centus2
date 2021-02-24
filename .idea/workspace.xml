@@ -20,8 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d9efb292-b504-468c-8390-308078de63c0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/centus/ExpenseListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/centus/ExpensesPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/centus2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/centus2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/centus2/centus/MainFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/centus2/centus/MainFrame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/centus/LoginDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/centus/LoginDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/centus/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/centus/MainFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/centus/PersonalManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/centus/PersonalManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/centus/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/centus/User.java" afterDir="false" />
     </list>
@@ -57,18 +62,21 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/db.properties" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/Centus-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/jdatepicker-1.3.2.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\lukas\Google Drive\Studia\Semestr3\Java\centus2" />
-    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="centus" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="centus" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\lukas\Google Drive\Studia\Semestr3\Java\centus2" />
     </key>
   </component>
   <component name="RunManager">
@@ -137,39 +145,39 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="159" y="0" key="DBNavigator.ProjectSettingsDialog/0.0.1280.680/1920.0.1680.1010@0.0.1280.680" timestamp="1611413638286" />
-    <state x="348" y="82" key="FileChooserDialogImpl" timestamp="1611442596624">
+    <state x="348" y="82" key="FileChooserDialogImpl" timestamp="1614069391250">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="348" y="82" key="FileChooserDialogImpl/0.0.1280.680/1920.0.1680.1010@0.0.1280.680" timestamp="1611413686643" />
+    <state x="348" y="82" key="FileChooserDialogImpl/0.0.1280.680/1920.0.1680.1010@0.0.1280.680" timestamp="1614069391250" />
     <state x="348" y="82" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1611442596624" />
-    <state width="1237" height="270" key="GridCell.Tab.0.bottom" timestamp="1614067128601">
+    <state width="1237" height="270" key="GridCell.Tab.0.bottom" timestamp="1614163884610">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="270" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1680.1010@0.0.1280.680" timestamp="1614067128601" />
+    <state width="1237" height="270" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1680.1010@0.0.1280.680" timestamp="1614163884610" />
     <state width="1637" height="440" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1680.1010@1920.0.1680.1010" timestamp="1611438904574" />
     <state width="1237" height="270" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1613474384761" />
-    <state width="1237" height="270" key="GridCell.Tab.0.center" timestamp="1614067128600">
+    <state width="1237" height="270" key="GridCell.Tab.0.center" timestamp="1614163884610">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="270" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1680.1010@0.0.1280.680" timestamp="1614067128600" />
+    <state width="1237" height="270" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1680.1010@0.0.1280.680" timestamp="1614163884610" />
     <state width="1637" height="440" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1680.1010@1920.0.1680.1010" timestamp="1611438904574" />
     <state width="1237" height="270" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1613474384761" />
-    <state width="1237" height="270" key="GridCell.Tab.0.left" timestamp="1614067128600">
+    <state width="1237" height="270" key="GridCell.Tab.0.left" timestamp="1614163884610">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="270" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1680.1010@0.0.1280.680" timestamp="1614067128600" />
+    <state width="1237" height="270" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1680.1010@0.0.1280.680" timestamp="1614163884610" />
     <state width="1637" height="440" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1680.1010@1920.0.1680.1010" timestamp="1611438904574" />
     <state width="1237" height="270" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1613474384761" />
-    <state width="1237" height="270" key="GridCell.Tab.0.right" timestamp="1614067128600">
+    <state width="1237" height="270" key="GridCell.Tab.0.right" timestamp="1614163884610">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="270" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1680.1010@0.0.1280.680" timestamp="1614067128600" />
+    <state width="1237" height="270" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1680.1010@0.0.1280.680" timestamp="1614163884610" />
     <state width="1637" height="440" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1680.1010@1920.0.1680.1010" timestamp="1611438904574" />
     <state width="1237" height="270" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1613474384761" />
-    <state x="121" y="0" key="SettingsEditor" timestamp="1611413086392">
+    <state x="121" y="0" key="SettingsEditor" timestamp="1614069398305">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="121" y="0" key="SettingsEditor/0.0.1280.680/1920.0.1680.1010@0.0.1280.680" timestamp="1611413086392" />
+    <state x="121" y="0" key="SettingsEditor/0.0.1280.680/1920.0.1680.1010@0.0.1280.680" timestamp="1614069398305" />
     <state x="297" y="151" key="run.anything.popup" timestamp="1613299460358">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

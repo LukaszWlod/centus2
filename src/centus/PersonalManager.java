@@ -15,10 +15,11 @@ public class PersonalManager extends DBManager{
         return  executeSelectQuery(selectEmails);
     }
 
-    public ResultSet loadPasswordFromDatabase(String login ) throws SQLException {
-        String selectPassword ="SELECT password FROM person WHERE email =  '"   + login + "';";
+    public ResultSet loadUserFromDatabase(String login ) throws SQLException {
+        String selectPassword ="SELECT * FROM person WHERE email =  '"   + login + "';";
         return  executeSelectQuery(selectPassword);
     }
+
 
     public  void addNewUser (User newUser) throws  SQLException{
        String insertInto = " INSERT INTO person ( first_name , last_name , email , password)"+

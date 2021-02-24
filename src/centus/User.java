@@ -1,10 +1,13 @@
 package centus;
 
 public class User {
+    private  int id;
     private String name;
     private  String lastName;
     private String email;
+    private  boolean isAdmin;
     private String password;
+    private double declaredAmount;
 
     public User(){};
 
@@ -15,6 +18,22 @@ public class User {
         this.password = password;
 
     }
+    public  User (int id,String name,String lastName ,String email ,boolean isAdmin,
+                  String password, double declaredAmount){
+        this.id = id;
+        this.name = name;
+        this.lastName = lastName;
+        this.email = email;
+        this.isAdmin = isAdmin;
+        this.password = password;
+        this.declaredAmount = declaredAmount;
+
+
+    }
+
+
+
+
 
     public String getName() {
         return name;
@@ -46,5 +65,29 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public double getDeclaredAmount() {
+        return declaredAmount;
+    }
+
+    public void setDeclaredAmount(double declaredAmount) {
+        this.declaredAmount = declaredAmount;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
     }
 }

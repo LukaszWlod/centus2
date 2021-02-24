@@ -34,6 +34,8 @@ public class LoginDialog extends JDialog {
     private JButton safeButton;
     private JButton cancelButton;
 
+    private  User user;
+
 
 
 
@@ -73,17 +75,31 @@ public class LoginDialog extends JDialog {
             String selectedItem = comboUser.getSelectedItem().toString();
             String password= null;
 
+            int id = 0;
+            String name = null;
+            String lastName = null;
+            boolean isAdmin = false;
+            double declaredAmount = 0;
+
+
             String passwordFromField = new String( passwordField.getPassword());
             try {
-                ResultSet resultSet = personalManager.loadPasswordFromDatabase(selectedItem);
+                ResultSet resultSet = personalManager.loadUserFromDatabase(selectedItem);
                 if (resultSet.next()){
+                    id = resultSet.getInt("id");
+                    name= resultSet.getString("first_name");
+                    lastName= resultSet.getString("last_name");
                     password = resultSet.getString("password");
+                    isAdmin = resultSet.getBoolean("admin");
+                    declaredAmount = resultSet.getDouble("declared_amount");
+
                 }
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
 
             if (passwordFromField.equals(password)){
+                user = new User(id,name,lastName,selectedItem,isAdmin,password,declaredAmount);
                 setVisible(false);
             }
             else{
@@ -250,6 +266,7 @@ public class LoginDialog extends JDialog {
     }
 
 
-
-
+    public User getUser() {
+        return user;
+    }
 }
